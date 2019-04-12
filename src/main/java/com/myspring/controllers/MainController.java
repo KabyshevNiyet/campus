@@ -19,11 +19,21 @@ public class MainController {
     @Autowired
     CampusBean campusBean;
 
-    @RequestMapping(value = {"index", "/"})
+    @RequestMapping(value = {"index", "/","home"})
     public ModelAndView indexPage(){
+        ModelAndView mw = new ModelAndView("index");
+//        List<Advisor> allAdvisors = campusBean.getAllAdvisors();
+//        mw.addObject("advisors", allAdvisors);
+        return mw;
+    }
+
+    @RequestMapping(value = "/logining", method = RequestMethod.POST)
+    public ModelAndView logining(@RequestParam(name = "login") String login){
         ModelAndView mw = new ModelAndView("teachersPages/teachers_firstPage");
-        List<Advisor> allAdvisors = campusBean.getAllAdvisors();
-        mw.addObject("advisors", allAdvisors);
+        if (login.toLowerCase().equals("student")){
+             mw = new ModelAndView("studentPages/studentFirstPage");
+        }
+
         return mw;
     }
 
