@@ -60,4 +60,14 @@ public class ConnectorComment {
     public void setPractice_id(Practice practice_id) {
         this.practice_id = practice_id;
     }
+
+    @Override
+    public String toString() {
+        return "ConnectorComment{" +
+                "id=" + id +
+                ", comment_id=" + comment_id +
+                ", student_id=" + student_id +
+                ", practice_id=" + practice_id +
+                '}';
+    }
 }

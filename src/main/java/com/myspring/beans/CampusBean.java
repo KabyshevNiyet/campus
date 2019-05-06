@@ -38,7 +38,11 @@ public class CampusBean {
     }
 
     public void addCommentConnector(ConnectorComment connectorComment){
-
+        Session session =sessionFactory.openSession();
+        Transaction transaction = session.beginTransaction();
+        session.save(connectorComment);
+        transaction.commit();
+        session.close();
     }
     public List<Advisor> getAllAdvisors(){
         Session session = sessionFactory.openSession();
@@ -55,6 +59,15 @@ public class CampusBean {
         CriteriaQuery<Student> criteriaQuery = builder.createQuery(Student.class);
         Root root = criteriaQuery.from(Student.class);
         List<Student> students = session.createQuery(criteriaQuery).list();
+        return students;
+    }
+
+    public List<ConnectorComment> getAllConnector(){
+        Session session = sessionFactory.openSession();
+        CriteriaBuilder builder = session.getCriteriaBuilder();
+        CriteriaQuery<ConnectorComment> criteriaQuery = builder.createQuery(ConnectorComment.class);
+        Root root = criteriaQuery.from(ConnectorComment.class);
+        List<ConnectorComment> students = session.createQuery(criteriaQuery).list();
         return students;
     }
 
@@ -86,6 +99,8 @@ public class CampusBean {
         session.close();
         return student;
     }
+
+
 
 //    Session session = sessionFactory.openSession();
 //    CriteriaBuilder criteriaBuilder = session.getCriteriaBuilder();

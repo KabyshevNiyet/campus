@@ -151,7 +151,8 @@
 
                                 <c:forEach items="${practiceArray}" var="practice">
 
-                                <tbody onclick="window.location='/studentPracticePage?practiceID=${practice.practice_id}';">
+                                    <tbody onclick="window.location='/studentPracticePage?practiceID=${practice.practice_id}';">
+                                    <%--<form action="/studentPracticePage" onclick="this">--%>
                                 <tr >
                                     <td>${practice.practice_id}</td>
                                     <td>${practice.name}</td>
@@ -163,6 +164,8 @@
                                     <td>${practice.date_finish}</td>
                                     <td>${practice.score}</td>
                                 </tr>
+                                        <%--<input type="hidden" value="${practice.practice_id}" name="practiceID">--%>
+                                    <%--</form>--%>
                                 </tbody>
                                 </c:forEach>
                             </table>

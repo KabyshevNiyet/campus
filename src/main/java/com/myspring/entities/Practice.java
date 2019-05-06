@@ -22,9 +22,6 @@ public class Practice implements Serializable{
     @ManyToOne
     @JoinColumn(name = "company_id")
     private Company    company_id;
-    @ManyToOne
-    @JoinColumn(name = "comment_id")
-    private Comment  comment;
     @Column(name = "date_start")
     private Date    date_start;
     @Column(name = "date_finish")
@@ -36,7 +33,7 @@ public class Practice implements Serializable{
     public Practice() {
     }
 
-    public Practice(Student student_id, String name, Advisor advisor_id, Company company_id, Date date_start, Date date_finish, int score, Comment comment) {
+    public Practice(Student student_id, String name, Advisor advisor_id, Company company_id, Date date_start, Date date_finish, int score) {
         this.student_id = student_id;
         this.name = name;
         this.advisor_id = advisor_id;
@@ -44,7 +41,6 @@ public class Practice implements Serializable{
         this.date_start = date_start;
         this.date_finish = date_finish;
         this.score = score;
-        this.comment = comment;
     }
 
     public Long getPractice_id() {
@@ -111,13 +107,6 @@ public class Practice implements Serializable{
         this.score = score;
     }
 
-    public Comment getComment() {
-        return comment;
-    }
-
-    public void setComment(Comment comment) {
-        this.comment = comment;
-    }
 
     @Override
     public String toString() {
@@ -127,7 +116,6 @@ public class Practice implements Serializable{
                 ", name='" + name + '\'' +
                 ", advisor_id=" + advisor_id +
                 ", company_id=" + company_id +
-                ", comment=" + comment +
                 ", date_start=" + date_start +
                 ", date_finish=" + date_finish +
                 ", score=" + score +

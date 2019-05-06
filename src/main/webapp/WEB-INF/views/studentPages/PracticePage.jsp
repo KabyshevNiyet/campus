@@ -1,5 +1,4 @@
-<%@ page import="java.text.DateFormat" %>
-<%@ page import="java.text.SimpleDateFormat" %><%--
+<%--
   Created by IntelliJ IDEA.
   User: kuanyshsalyk
   Date: 07.03.2019
@@ -7,6 +6,8 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -145,21 +146,22 @@
                         </tr>
                         </thead>
 
-                        <c:forEach items="${practiceArray}" var="practice1">
-                        <tbody onclick="window.location='/studentPracticePage?practiceID=${practice.practice_id}';">
-                        <tr >
-                            <td>${practice1.practice_id}</td>
-                            <td>${practice1.name}</td>
-                            <td>Практика</td>
-                            <td>${practice1.advisor_id.name}</td>
-                            <td>${practice1.company_id.compName}</td>
-                            <td>${practice1.company_id.name}</td>
-                            <td>${practice1.date_start}</td>
-                            <td>${practice1.date_finish}</td>
-                            <td>${practice1.score}</td>
-                        </tr>
-                        </tbody>
-                        </c:forEach>
+                            <c:forEach items="${arrayPractice}" var="practice1">
+
+                                <tbody onclick="window.location='/studentPracticePage?practiceID=${practice1.practice_id}';">
+                                <tr >
+                                    <td>${practice1.practice_id}</td>
+                                    <td>${practice1.name}</td>
+                                    <td>Практика</td>
+                                    <td>${practice1.advisor_id.name}</td>
+                                    <td>${practice1.company_id.compName}</td>
+                                    <td>${practice1.company_id.name}</td>
+                                    <td>${practice1.date_start}</td>
+                                    <td>${practice1.date_finish}</td>
+                                    <td>${practice1.score}</td>
+                                </tr>
+                                </tbody>
+                            </c:forEach>
                     </table>
 
                 </div>
@@ -184,19 +186,17 @@
                         <tr>
                             <td> <TEXTAREA class="form-control" id="exampleFormControlTextarea1" rows="4" name="fullcomment"></TEXTAREA></td>
                             <td>${currentDate}</td>
-                            <input type="hidden" name="practiceID" value="${practice.practice_id}">
+                            <input type="hidden" name="practiceID" value="${usersPractice.practice_id}">
                             <input type="hidden" name="userID" value="${student.login}">
                             <td><input type="submit" class="btn btn-success" ></td>
                         </tr>
                         </form>
-                            <c:forEach items="${practiceArray}" var="practice1">
-                            <c:if test="${practice.comment!=null}">
+                            <c:forEach items="${commentArray}" var="commentArr">
                             <tr>
-                            <td>${practice1.comment.comment}</td>
-                            <td>${practice1.comment.commentDate}</td>
+                            <td>${commentArr.comment_id.comment}</td>
+                            <td>${commentArr.comment_id.commentDate}</td>
                             <td></td>
                         </tr>
-                            </c:if>
                             </c:forEach>
                         </tbody>
 
