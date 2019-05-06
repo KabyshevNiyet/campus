@@ -1,33 +1,39 @@
 package com.myspring.entities;
 
-
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "company")
-public class Company {
+public class Company implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "company_id")
-    private long company_id;
-
-    @Column(name = "name", length = 255)
+    private Long  company_id;
+    @Column(name = "name")
     private String name;
-
-    @Column(name = "director", length = 255)
-    private String director;
-
+    @Column(name = "companyName")
+    private String compName;
     @Column(name = "ces")
     private Long ces;
-
     @Column(name = "status")
-    private Long status;
+    private int status;
 
-    public long getCompany_id() {
+    public Company(String name, String compName, Long ces, int status) {
+        this.name = name;
+        this.compName = compName;
+        this.ces = ces;
+        this.status = status;
+    }
+
+    public Company() {
+    }
+
+    public Long getCompany_id() {
         return company_id;
     }
 
-    public void setCompany_id(long company_id) {
+    public void setCompany_id(Long company_id) {
         this.company_id = company_id;
     }
 
@@ -39,12 +45,12 @@ public class Company {
         this.name = name;
     }
 
-    public String getDirector() {
-        return director;
+    public String getCompName() {
+        return compName;
     }
 
-    public void setDirector(String director) {
-        this.director = director;
+    public void setCompName(String compName) {
+        this.compName = compName;
     }
 
     public Long getCes() {
@@ -55,11 +61,11 @@ public class Company {
         this.ces = ces;
     }
 
-    public Long getStatus() {
+    public int getStatus() {
         return status;
     }
 
-    public void setStatus(Long status) {
+    public void setStatus(int status) {
         this.status = status;
     }
 }

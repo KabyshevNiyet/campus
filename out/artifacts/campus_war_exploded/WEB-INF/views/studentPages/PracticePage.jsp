@@ -1,4 +1,5 @@
-<%--
+<%@ page import="java.text.DateFormat" %>
+<%@ page import="java.text.SimpleDateFormat" %><%--
   Created by IntelliJ IDEA.
   User: kuanyshsalyk
   Date: 07.03.2019
@@ -55,7 +56,7 @@
 
             <li _ngcontent-c3="" class="nav-item dropdown" ngbdropdown="">
                 <a _ngcontent-c3="" aria-haspopup="true" class="nav-link dropdown-toggle" href="javascript:void(0)" ngbdropdowntoggle="" aria-expanded="false">
-                    <i _ngcontent-c3="" class="fa fa-user"></i> Madina Saparbayeva <b _ngcontent-c3="" class="caret">
+                    <i _ngcontent-c3="" class="fa fa-user"></i> ${student.name} ${student.surname} <b _ngcontent-c3="" class="caret">
                 </b></a>
                 <div _ngcontent-c3="" class="dropdown-menu dropdown-menu-right">
                     <a _ngcontent-c3="" class="dropdown-item" href="#/profile">
@@ -83,23 +84,6 @@
                 </a>
             </li>
 
-
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <i class="fas fa-fw fa-folder"></i>
-                    <span>Бизнес-процесс</span>
-                </a>
-                <div class="dropdown-menu" aria-labelledby="pagesDropdown">
-                    <h6 class="dropdown-header">Login Screens:</h6>
-                    <a class="dropdown-item" href="login.html">Login</a>
-                    <a class="dropdown-item" href="register.html">Register</a>
-                    <a class="dropdown-item" href="forgot-password.html">Forgot Password</a>
-                    <div class="dropdown-divider"></div>
-                    <h6 class="dropdown-header">Other Pages:</h6>
-                    <a class="dropdown-item" href="404.html">404 Page</a>
-                    <a class="dropdown-item active" href="blank.html">Blank Page</a>
-                </div>
-            </li>
             <li class="nav-item">
                 <a class="nav-link" href="#">
                     <i _ngcontent-c4="" class="fa fa-fw fa-object-group"></i>
@@ -109,6 +93,11 @@
                 <a class="nav-link" href="#">
                     <i _ngcontent-c4="" class="fa fa-book"></i>
                     <span>Мои транскрипты</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/index">
+                    <i _ngcontent-c4="" class="fa fa-fw fa-object-group"></i>
+                    <span>Выйти</span></a>
             </li>
         </ul>
     </ul>
@@ -126,7 +115,7 @@
                     <a href="#">Рабочая область</a>
                 </li>
                 <li class="breadcrumb-item ">
-                    <a href="/studentFirstPage">Мои дневники</a>
+                    <a href="/studentFirstPage?">Мои дневники</a>
                 </li>
                 <li class="breadcrumb-item active">
                     Практическая работа</li>
@@ -145,28 +134,32 @@
                         <thead>
                         <tr>
                             <th>№</th>
-                            <th>Название практики </th>
+                            <th>Название практики</th>
                             <th>Формат</th>
                             <th>Куратор</th>
                             <th>Руководитель</th>
                             <th>Место прохождения практики</th>
-                            <th>Дата</th>
+                            <th>Дата начало</th>
+                            <th>Дата окончания</th>
                             <th>Оценка</th>
                         </tr>
                         </thead>
 
-                        <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>Практическая работа</td>
+                        <c:forEach items="${practiceArray}" var="practice1">
+                        <tbody onclick="window.location='/studentPracticePage?practiceID=${practice.practice_id}';">
+                        <tr >
+                            <td>${practice1.practice_id}</td>
+                            <td>${practice1.name}</td>
                             <td>Практика</td>
-                            <td>Бауыржанов Д.С</td>
-                            <td>Молын Е.К</td>
-                            <td>ТОО "Rainbek</td>
-                            <td>15.05.19-24.05.19</td>
-                            <td>100</td>
+                            <td>${practice1.advisor_id.name}</td>
+                            <td>${practice1.company_id.compName}</td>
+                            <td>${practice1.company_id.name}</td>
+                            <td>${practice1.date_start}</td>
+                            <td>${practice1.date_finish}</td>
+                            <td>${practice1.score}</td>
                         </tr>
                         </tbody>
+                        </c:forEach>
                     </table>
 
                 </div>
@@ -187,16 +180,24 @@
                         </thead>
 
                         <tbody>
+                        <form action="/add_real_practice" method="get">
                         <tr>
-                            <td> <textarea class="form-control" id="exampleFormControlTextarea1" rows="4"></textarea></td>
-                            <td>16.05.19</td>
-                            <td><button class="btn btn-success" onclick="alert('ADDED')">Добавить</button></td>
+                            <td> <TEXTAREA class="form-control" id="exampleFormControlTextarea1" rows="4" name="fullcomment"></TEXTAREA></td>
+                            <td>${currentDate}</td>
+                            <input type="hidden" name="practiceID" value="${practice.practice_id}">
+                            <input type="hidden" name="userID" value="${student.login}">
+                            <td><input type="submit" class="btn btn-success" ></td>
                         </tr>
-                        <tr>
-                            <td>Первый день на практике</td>
-                            <td>15.05.19</td>
+                        </form>
+                            <c:forEach items="${practiceArray}" var="practice1">
+                            <c:if test="${practice.comment!=null}">
+                            <tr>
+                            <td>${practice1.comment.comment}</td>
+                            <td>${practice1.comment.commentDate}</td>
                             <td></td>
                         </tr>
+                            </c:if>
+                            </c:forEach>
                         </tbody>
 
                     </table>
@@ -221,7 +222,7 @@
                         <tr>
                             <td>Фидбек от куратора</td>
                             <td>24.05.19</td>
-                            <td>100</td>
+                            <td></td>
                         </tr>
                         </tbody>
 

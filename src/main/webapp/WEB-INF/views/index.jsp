@@ -16,10 +16,10 @@
     <h1>Hello</h1>
 
     <form action="/logining" method="post">
-        <label> Login </label>
-        <input type="text" name="login">
-        <label> Login </label>
-        <input type="password" name="password">
+        <label>Login : </label>
+        <input type="number" name="login"><br>
+        <label>Password : </label>
+        <input type="password" name="password"><br>
         <input type="submit">
     </form>
 

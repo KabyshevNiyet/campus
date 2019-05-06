@@ -1,17 +1,25 @@
 package com.myspring.entities;
 
 import javax.persistence.*;
+import java.io.Serializable;
+
 
 @Entity
 @Table(name = "specialty")
-public class Specialty {
+public class Specialty implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "specialty_id")
     private Long specialty_id;
-
-    @Column(name = "name", length = 255)
+    @Column(name = "name")
     private String name;
+
+    public Specialty(String name) {
+        this.name = name;
+    }
+
+    public Specialty() {
+    }
 
     public Long getSpecialty_id() {
         return specialty_id;

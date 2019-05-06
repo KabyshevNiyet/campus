@@ -1,43 +1,51 @@
 package com.myspring.entities;
 
-
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
 
 @Entity
 @Table(name = "practice")
-public class Practice {
+public class Practice implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "practice_id")
-    private Long practice_id;
-
+    private Long 	practice_id;
     @ManyToOne
     @JoinColumn(name = "student_id")
-    private Long student_id;
-
-    @Column(name = "name", length = 255)
-    private String name;
-
+    private Student    student_id;
+    @Column(name = "name")
+    private String  name;
     @ManyToOne
     @JoinColumn(name = "advisor_id")
-    private Long advisor_id;
-
+    private Advisor    advisor_id;
     @ManyToOne
     @JoinColumn(name = "company_id")
-    private Long company_id;
-
+    private Company    company_id;
+    @ManyToOne
+    @JoinColumn(name = "comment_id")
+    private Comment  comment;
     @Column(name = "date_start")
-    private Date date_start;
-
+    private Date    date_start;
     @Column(name = "date_finish")
-    private Date date_finsh;
-
+    private Date    date_finish;
     @Column(name = "score")
-    private int score;
+    private int     score;
 
-    @Column(name = "comment", length = 255)
-    private String comment;
+
+    public Practice() {
+    }
+
+    public Practice(Student student_id, String name, Advisor advisor_id, Company company_id, Date date_start, Date date_finish, int score, Comment comment) {
+        this.student_id = student_id;
+        this.name = name;
+        this.advisor_id = advisor_id;
+        this.company_id = company_id;
+        this.date_start = date_start;
+        this.date_finish = date_finish;
+        this.score = score;
+        this.comment = comment;
+    }
 
     public Long getPractice_id() {
         return practice_id;
@@ -47,11 +55,11 @@ public class Practice {
         this.practice_id = practice_id;
     }
 
-    public Long getStudent_id() {
+    public Student getStudent_id() {
         return student_id;
     }
 
-    public void setStudent_id(Long student_id) {
+    public void setStudent_id(Student student_id) {
         this.student_id = student_id;
     }
 
@@ -63,19 +71,19 @@ public class Practice {
         this.name = name;
     }
 
-    public Long getAdvisor_id() {
+    public Advisor getAdvisor_id() {
         return advisor_id;
     }
 
-    public void setAdvisor_id(Long advisor_id) {
+    public void setAdvisor_id(Advisor advisor_id) {
         this.advisor_id = advisor_id;
     }
 
-    public Long getCompany_id() {
+    public Company getCompany_id() {
         return company_id;
     }
 
-    public void setCompany_id(Long company_id) {
+    public void setCompany_id(Company company_id) {
         this.company_id = company_id;
     }
 
@@ -87,12 +95,12 @@ public class Practice {
         this.date_start = date_start;
     }
 
-    public Date getDate_finsh() {
-        return date_finsh;
+    public Date getDate_finish() {
+        return date_finish;
     }
 
-    public void setDate_finsh(Date date_finsh) {
-        this.date_finsh = date_finsh;
+    public void setDate_finish(Date date_finish) {
+        this.date_finish = date_finish;
     }
 
     public int getScore() {
@@ -103,11 +111,27 @@ public class Practice {
         this.score = score;
     }
 
-    public String getComment() {
+    public Comment getComment() {
         return comment;
     }
 
-    public void setComment(String comment) {
+    public void setComment(Comment comment) {
         this.comment = comment;
     }
+
+    @Override
+    public String toString() {
+        return "Practice{" +
+                "practice_id=" + practice_id +
+                ", student_id=" + student_id +
+                ", name='" + name + '\'' +
+                ", advisor_id=" + advisor_id +
+                ", company_id=" + company_id +
+                ", comment=" + comment +
+                ", date_start=" + date_start +
+                ", date_finish=" + date_finish +
+                ", score=" + score +
+                '}';
+    }
 }
+

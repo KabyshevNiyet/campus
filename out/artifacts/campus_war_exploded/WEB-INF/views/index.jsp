@@ -14,12 +14,14 @@
 </head>
 <body>
     <h1>Hello</h1>
-    <c:forEach items="${advisors}" var="adv">
-        <h2>
-            ${adv.surname} - ${adv.name}
-        </h2>
-    </c:forEach>
 
+    <form action="/logining" method="post">
+        <label>Login : </label>
+        <input type="number" name="login"><br>
+        <label>Password : </label>
+        <input type="password" name="password"><br>
+        <input type="submit">
+    </form>
 
 </body>
 </html>

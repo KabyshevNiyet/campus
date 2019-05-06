@@ -1,35 +1,40 @@
 package com.myspring.entities;
 
 import javax.persistence.*;
-import java.util.Date;
+import java.io.Serializable;
+import java.sql.Date;
 
 @Entity
 @Table(name = "student")
-public class Student {
+public class Student implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "student_id")
-    private Long student_id;
-
-    @Column(name = "name", length = 255)
-    private String name;
-
-    @Column(name = "surname", length = 255)
-    private String surname;
-
+    private  Long   student_id;
+    @Column(name = "name")
+    private String  name;
+    @Column(name = "surname")
+    private String  surname;
     @Column(name = "date_of_birth")
     private Date date_of_birth;
-
-    @ManyToOne
-    @JoinColumn(name = "group_id")
-    private Long group_id;
-
+    @Column(name = "group_id")
+    private Long    group_id;
     @Column(name = "login")
-    private Long id;
+    private int     login;
+    @Column(name = "password")
+    private String  password;
 
-    @Column(name = "password", length = 255)
-    private String password;
+    public Student() {
+    }
 
+    public Student(String name, String surname, Date date_of_birth, Long group_id, int login, String password) {
+        this.name = name;
+        this.surname = surname;
+        this.date_of_birth = date_of_birth;
+        this.group_id = group_id;
+        this.login = login;
+        this.password = password;
+    }
 
     public Long getStudent_id() {
         return student_id;
@@ -71,12 +76,12 @@ public class Student {
         this.group_id = group_id;
     }
 
-    public Long getId() {
-        return id;
+    public int getLogin() {
+        return login;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setLogin(int login) {
+        this.login = login;
     }
 
     public String getPassword() {
@@ -85,5 +90,18 @@ public class Student {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    @Override
+    public String toString() {
+        return "Student{" +
+                "student_id=" + student_id +
+                ", name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
+                ", date_of_birth=" + date_of_birth +
+                ", group_id=" + group_id +
+                ", login=" + login +
+                ", password='" + password + '\'' +
+                '}';
     }
 }

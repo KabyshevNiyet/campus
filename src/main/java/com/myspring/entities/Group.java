@@ -1,26 +1,30 @@
 package com.myspring.entities;
 
-
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "group")
-public class Group {
+public class Group implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "group_id")
     private Long group_id;
-
-    @Column(name = "name", length = 255)
+    @Column(name = "name")
     private String name;
-
-    @ManyToOne
-    @JoinColumn(name = "specialty_id")
+    @Column(name = "specialty_id")
     private Long specialty_id;
-
-    @ManyToOne
-    @JoinColumn(name = "advisor_id")
+    @Column(name = "advisor_id")
     private Long advisor_id;
+
+    public Group() {
+    }
+
+    public Group(String name, Long specialty_id, Long advisor_id) {
+        this.name = name;
+        this.specialty_id = specialty_id;
+        this.advisor_id = advisor_id;
+    }
 
     public Long getGroup_id() {
         return group_id;

@@ -31,7 +31,7 @@ ncoding=utf-8"/>
             </props>
         </property>
     </bean>
-    <bean id = "orderBean" class="com.myspring.beans.CampusBean">
+    <bean id = "campusBean" class="com.myspring.beans.CampusBean">
         <property name="sessionFactory" ref="sessionFactory"/>
     </bean>
 

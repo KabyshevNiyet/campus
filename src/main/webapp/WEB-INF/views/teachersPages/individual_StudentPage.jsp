@@ -55,7 +55,7 @@
 
             <li _ngcontent-c3="" class="nav-item dropdown" ngbdropdown="">
                 <a _ngcontent-c3="" aria-haspopup="true" class="nav-link dropdown-toggle" href="javascript:void(0)" ngbdropdowntoggle="" aria-expanded="false">
-                    <i _ngcontent-c3="" class="fa fa-user"></i> Madina Saparbayeva <b _ngcontent-c3="" class="caret">
+                    <i _ngcontent-c3="" class="fa fa-user"></i> Madina Saparbayeva 1}<b _ngcontent-c3="" class="caret">
                 </b></a>
                 <div _ngcontent-c3="" class="dropdown-menu dropdown-menu-right">
                     <a _ngcontent-c3="" class="dropdown-item" href="#/profile">
@@ -82,23 +82,6 @@
                 </a>
             </li>
 
-
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <i class="fas fa-fw fa-folder"></i>
-                    <span>Бизнес-процесс</span>
-                </a>
-                <div class="dropdown-menu" aria-labelledby="pagesDropdown">
-                    <h6 class="dropdown-header">Login Screens:</h6>
-                    <a class="dropdown-item" href="login.html">Login</a>
-                    <a class="dropdown-item" href="register.html">Register</a>
-                    <a class="dropdown-item" href="forgot-password.html">Forgot Password</a>
-                    <div class="dropdown-divider"></div>
-                    <h6 class="dropdown-header">Other Pages:</h6>
-                    <a class="dropdown-item" href="404.html">404 Page</a>
-                    <a class="dropdown-item active" href="blank.html">Blank Page</a>
-                </div>
-            </li>
             <li class="nav-item">
                 <a class="nav-link" href="#">
                     <i _ngcontent-c4="" class="fa fa-fw fa-object-group"></i>
@@ -108,6 +91,11 @@
                 <a class="nav-link" href="#">
                     <i _ngcontent-c4="" class="fa fa-book"></i>
                     <span>Мои транскрипты</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/logining">
+                    <i _ngcontent-c4="" class="fa fa-fw fa-object-group"></i>
+                    <span>Выйти</span></a>
             </li>
         </ul>
     </ul>
