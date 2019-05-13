@@ -56,7 +56,7 @@
 
             <li _ngcontent-c3="" class="nav-item dropdown" ngbdropdown="">
                 <a _ngcontent-c3="" aria-haspopup="true" class="nav-link dropdown-toggle" href="javascript:void(0)" ngbdropdowntoggle="" aria-expanded="false">
-                    <i _ngcontent-c3="" class="fa fa-user"></i> Madina Saparbayeva <b _ngcontent-c3="" class="caret">
+                    <i _ngcontent-c3="" class="fa fa-user"></i>${advisor.name} ${advisor.surname}<b _ngcontent-c3="" class="caret">
                 </b></a>
                 <div _ngcontent-c3="" class="dropdown-menu dropdown-menu-right">
                     <a _ngcontent-c3="" class="dropdown-item" href="#/profile">

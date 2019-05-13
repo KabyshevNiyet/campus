@@ -49,7 +49,7 @@
 
             <li _ngcontent-c3="" class="nav-item dropdown" ngbdropdown="">
                 <a _ngcontent-c3="" aria-haspopup="true" class="nav-link dropdown-toggle" href="javascript:void(0)" ngbdropdowntoggle="" aria-expanded="false">
-                    <i _ngcontent-c3="" class="fa fa-user"></i> Madina Saparbayeva <b _ngcontent-c3="" class="caret">
+                    <i _ngcontent-c3="" class="fa fa-user"></i>${advisor.name} ${advisor.surname}<b _ngcontent-c3="" class="caret">
                 </b></a>
                 <div _ngcontent-c3="" class="dropdown-menu dropdown-menu-right">
                     <a _ngcontent-c3="" class="dropdown-item" href="#/profile">
@@ -143,86 +143,17 @@
                             </tr>
                             </tr>
                             </tfoot>
-                            <tbody onclick="window.location='/studentPage';" >
+                            <c:forEach items="${group.students}" var="stud" >
+                            <tbody onclick="window.location='/studentPage?studentId=${stud.student_id}';" >
                             <%--<c:forEach items="10">    its for future database--%>
                             <tr>
-                                <td>1</td>
-                                <td>Салык Куаныш</td>
-                                <td>21897</td>
-                                <td>ВТиПО</td>
+                                <td>${stud.student_id}</td>
+                                <td>${stud.name} ${stud.surname}</td>
+                                <td>${stud.login} </td>
+                                <td>${stud.group_id.specialty_id.name} </td>
                                 <td><button class="btn btn-danger" onclick="alert('DELETED')">Удалить</button> </td>
                             </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>Cапарбаева Мадина</td>
-                                <td>21982</td>
-                                <td>ВТиПО</td>
-                                <td><button class="btn btn-danger" onclick="alert('DELETED')">Удалить</button> </td>
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td>Жуман Айгерим</td>
-                                <td>97123</td>
-                                <td>ВТиПО</td>
-                                <td><button class="btn btn-danger" onclick="alert('DELETED')">Удалить</button> </td>
-                            </tr>
-                            <tr>
-                                <td>4</td>
-                                <td>Кабышев Ниет</td>
-                                <td>13212</td>
-                                <td>ВТиПО</td>
-                                <td><button class="btn btn-danger" onclick="alert('DELETED')">Удалить</button> </td>
-                            </tr>
-                            <tr>
-                                <td>5</td>
-                                <td>Сын маминой подруги</td>
-                                <td>77777</td>
-                                <td>ВТиПО</td>
-                                <td><button class="btn btn-danger" onclick="alert('DELETED')">Удалить</button> </td>
-                            </tr>
-                            <tr>
-                                <td>6</td>
-                                <td>Кайрат Ансар</td>
-                                <td>72361</td>
-                                <td>ВТиПО</td>
-                                <td><button class="btn btn-danger" onclick="alert('DELETED')">Удалить</button> </td>
-                            </tr>
-                            <tr>
-                                <td>7</td>
-                                <td>Кантарбай Ерболат</td>
-                                <td>33212</td>
-                                <td>ВТиПО</td>
-                                <td><button class="btn btn-danger" onclick="alert('DELETED')">Удалить</button> </td>
-                            </tr>
-                            <tr>
-                                <td>8</td>
-                                <td>Жабытай Бексултан</td>
-                                <td>22321</td>
-                                <td>ВТиПО</td>
-                                <td><button class="btn btn-danger" onclick="alert('DELETED')">Удалить</button> </td>
-
-                            </tr>
-                            <tr>
-                                <td>9</td>
-                                <td>Усен Нургиса</td>
-                                <td>12312</td>
-                                <td>ВТиПО</td>
-                                <td><button class="btn btn-danger" onclick="alert('DELETED')">Удалить</button> </td>
-                            </tr>
-                            <tr>
-                                <td>10</td>
-                                <td>Мирзакул Айя</td>
-                                <td>76128</td>
-                                <td>ВТиПО</td>
-                                <td><button class="btn btn-danger" onclick="alert('DELETED')">Удалить</button> </td>
-                            </tr>
-                            <tr>
-                                <td>11</td>
-                                <td>Бокес Ажар</td>
-                                <td>17681</td>
-                                <td>ВТиПО</td>
-                                <td><button class="btn btn-danger" onclick="alert('DELETED')">Удалить</button> </td>
-                            </tr>
+                            </c:forEach>
 
                             <%--</c:forEach>--%>
                             </tbody>

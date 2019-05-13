@@ -55,7 +55,7 @@
 
             <li _ngcontent-c3="" class="nav-item dropdown" ngbdropdown="">
                 <a _ngcontent-c3="" aria-haspopup="true" class="nav-link dropdown-toggle" href="javascript:void(0)" ngbdropdowntoggle="" aria-expanded="false">
-                    <i _ngcontent-c3="" class="fa fa-user"></i> Madina Saparbayeva 1}<b _ngcontent-c3="" class="caret">
+                    <i _ngcontent-c3="" class="fa fa-user"></i>${advisor.name} ${advisor.surname}<b _ngcontent-c3="" class="caret">
                 </b></a>
                 <div _ngcontent-c3="" class="dropdown-menu dropdown-menu-right">
                     <a _ngcontent-c3="" class="dropdown-item" href="#/profile">
@@ -118,7 +118,7 @@
                 </li>
                 <li class="breadcrumb-item">
                     <i class="fa fa-home w3-xxlarge"></i>
-                    <a href="/teachers_studentListPage">Студенты</a>
+                    <a href="/teachers_studentListPage?groupId=${student.group_id.group_id}">Студенты</a>
                 </li>
                 <li class="breadcrumb-item active">
                     Любимый студент
@@ -130,7 +130,7 @@
             <!--first table-->
             <div class="card-body">
                 <div class="table-responsive">
-                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <table class="table table-bordered" id="dataTable5" width="100%" cellspacing="0">
                         <thead>
                         <tr>
                             <th>#</th>
@@ -139,11 +139,12 @@
                             <th>Специальность</th>
                         </tr>
                         </thead>
+                        <tbody>
                         <tr>
-                            <td>1</td>
-                            <td>Любимый студент</td>
-                            <td>21825</td>
-                            <td>ВТиПО</td>
+                            <td>${student.student_id}</td>
+                            <td>${student.name} ${student.surname}</td>
+                            <td>${student.login}</td>
+                            <td>${student.group_id.specialty_id.name}</td>
                         </tr>
                         </tbody>
                     </table>
@@ -162,29 +163,26 @@
                             <th>Куратор</th>
                             <th>Руководитель</th>
                             <th>Место прохождения</th>
-                            <th>Дата</th>
+                            <th>Дата начало</th>
+                            <th>Дата окончания</th>
                             <th>Оценка</th>
                         </tr>
                         </thead>
+
+                        <c:forEach items="${allPractice}" var="prc">
+                        <tbody>
                         <tr>
-                            <td>1</td>
-                            <td>Практическая работа 2 курса</td>
-                            <td>Болшыбаева А.</td>
-                            <td>Сатпаев М.</td>
+                            <td>${prc.practice_id}</td>
+                            <td>${prc.name}</td>
+                            <td>${prc.advisor_id.surname} ${prc.advisor_id.name}</td>
+                            <td>${prc.company_id.name}</td>
                             <td>г.Алматы</td>
-                            <td>14.06.19-20.06.19</td>
-                            <td>100</td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>Практическая работа 3 курса</td>
-                            <td>Болшыбаева А.</td>
-                            <td>Мухтар К.</td>
-                            <td>г.Алматы</td>
-                            <td>14.06.19-20.06.19</td>
-                            <td>100</td>
+                            <td>${prc.date_start}</td>
+                            <td>${prc.date_finish}</td>
+                            <td>${prc.score}</td>
                         </tr>
                         </tbody>
+                        </c:forEach>
                     </table>
                 </div>
             </div>
@@ -201,23 +199,14 @@
                             <th>Дата</th>
                         </tr>
                         </thead>
+                        <c:forEach items="${commentarii}" var="com">
+                        <tbody>
                         <tr>
-                            <td>Студент не заполнил</td>
-                            <td>16.09.19</td>
-                        </tr>
-                        <tr>
-                            <td>Студент не заполнил</td>
-                            <td>17.09.19</td>
-                        </tr>
-                        <tr>
-                            <td>Студент не заполнил</td>
-                            <td>18.09.19</td>
-                        </tr>
-                        <tr>
-                            <td>Студент не заполнил</td>
-                            <td>19.09.19</td>
+                            <td>${com.comment_id.comment}</td>
+                            <td>${com.comment_id.commentDate}</td>
                         </tr>
                         </tbody>
+                        </c:forEach>
                     </table>
                 </div>
             </div>
@@ -237,13 +226,15 @@
                             <th>Действия</th>
                         </tr>
                         </thead>
+                        <form action="/changeScoreForPractice" method="post">
+                            <input type="hidden" value="${student.student_id}" name="studentId">
                         <tr>
-                            <td>Фидбэк от куратора</td>
-                            <td>16.09.19</td>
-                            <td>80</td>
-                            <td><button class="btn btn-success">Применить</button></td>
-                            <td><button class="btn btn-warning">Изменить</button></td>
+                            <td><input type="text" name="ReportText"></td>
+                            <td>${curdate}</td>
+                            <td><input type="number" max="100" min="0"  name="ScoreForScore" value="${yourPractice.score}"></td>
+                            <td><input type="submit" class="btn btn-success" name="Применить"></td>
                         </tr>
+                        </form>
                         </tbody>
                     </table>
                 </div>

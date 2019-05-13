@@ -131,7 +131,7 @@
             <!-- DataTables Example -->
 
 
-            <form action="/add_real_practice" method="get">
+            <form action="/add_practice_toDB" method="get">
                 <table border='0' width='480px' cellpadding='0' cellspacing='0'>
                     <tr>
                         <td><h5>Данные о практике</h5></td>
@@ -144,43 +144,43 @@
                         <tr> <td>&nbsp;</td> </tr>
                         <tr>
                             <td>Куратор</td>
-                            <td>  <select>
-                                <option>Молын Е.К</option>
-                                <option>Молын Е.К</option>
-                                <option>Молын Е.К</option>
-                                <option>Молын Е.К</option>
-                                <option>Молын Е.К</option>
-                                <option>Молын Е.К</option>
+                            <td>  <select class="selectpicker" name="adviserId">
+                                <c:forEach items="${adviserArray}" var="adviser">
+                                <option value="${adviser.id}">${adviser.surname}  ${adviser.name}</option>
+                                </c:forEach>
                                 <%--add some backend functions--%>
                             </select>
-
                             </td>
-
-                        </tr>
-                        <tr> <td>&nbsp;</td> </tr>
-                        <tr>
-                            <td>Руководитель</td>
-                            <td><input type='text' id="boss" name='boss' required></td>
                         </tr>
                         <tr> <td>&nbsp;</td> </tr>
                         <tr>
                             <td>Место прохождения практики</td>
-                            <td><input type='text' id="location_of_practice" name='location_of_practice' required></td>
+                            <td>  <select class="selectpicker" name="companyId">
+                                <c:forEach items="${companyArray}" var="comp">
+                                    <option value="${comp.company_id}">${comp.name}</option>
+                                </c:forEach>
+                                <%--add some backend functions--%>
+                            </select>
+
+                            </td>                        </tr>
+                        <tr> <td>&nbsp;</td> </tr>
+                        <tr>
+                            <td>Дата старта</td>
+                            <td><input type='date'  placeholder="yyyy-mm-dd" name='dateOfStart' required></td>
                         </tr>
                         <tr> <td>&nbsp;</td> </tr>
                         <tr>
-                            <td>Дата</td>
-                            <td><input type='date' id="date" placeholder="yyyy-mm-dd" name='date' required></td>
+                            <td>Дата окончания</td>
+                            <td><input type='date'  placeholder="yyyy-mm-dd" name='dateOfFinish' required></td>
                         </tr>
                         <tr> <td>&nbsp;</td> </tr>
                     </table>
                 </table>
                 </table>
                 <p>
+                    <input type="checkbox" required>
                     <b>Договор</b> Раздел о соглашении принять данного студента на стажировку
-                </p>
-                <p>
-                    <b>ЭЦП</b>  <a href="javascript:alert('Hello World!');"> Создать ссылку</a>
+                    <br>
                 </p>
 
                         <input type='submit' value="Добавить">

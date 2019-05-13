@@ -67,14 +67,6 @@
     <div id="wrapper">
 
         <!-- Sidebar -->
-        <ul class="sidebar navbar-nav">
-            <li class="nav-item">
-                <a class="nav-link" href="#">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>Рабочая область</span>
-                </a>
-            </li>
-
 
 
             <ul class="sidebar navbar-nav">
@@ -102,7 +94,7 @@
                         <span>Мои транскрипты</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/logining">
+                    <a class="nav-link" href="/index">
                         <i _ngcontent-c4="" class="fa fa-fw fa-object-group"></i>
                         <span>Выйти</span></a>
                 </li>
@@ -214,7 +206,7 @@
                 <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="login.html">Logout</a>
+                    <a class="btn btn-primary" href="/index">Logout</a>
                 </div>
             </div>
         </div>

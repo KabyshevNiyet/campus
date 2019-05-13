@@ -17,8 +17,9 @@ public class Student implements Serializable {
     private String  surname;
     @Column(name = "date_of_birth")
     private Date date_of_birth;
-    @Column(name = "group_id")
-    private Long    group_id;
+    @ManyToOne
+    @JoinColumn(name = "group_id")
+    private Group    group_id;
     @Column(name = "login")
     private int     login;
     @Column(name = "password")
@@ -27,7 +28,7 @@ public class Student implements Serializable {
     public Student() {
     }
 
-    public Student(String name, String surname, Date date_of_birth, Long group_id, int login, String password) {
+    public Student(String name, String surname, Date date_of_birth, Group group_id, int login, String password) {
         this.name = name;
         this.surname = surname;
         this.date_of_birth = date_of_birth;
@@ -68,11 +69,11 @@ public class Student implements Serializable {
         this.date_of_birth = date_of_birth;
     }
 
-    public Long getGroup_id() {
+    public Group getGroup_id() {
         return group_id;
     }
 
-    public void setGroup_id(Long group_id) {
+    public void setGroup_id(Group group_id) {
         this.group_id = group_id;
     }
 

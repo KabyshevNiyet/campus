@@ -21,26 +21,18 @@ public class CampusBean {
         this.sessionFactory = sessionFactory;
     }
 
-    public void addAdvisor(Advisor advisor){
+
+    public void addAnything(Object object){
         Session session = sessionFactory.openSession();
         Transaction transaction = session.beginTransaction();
-        session.save(advisor);
+        session.save(object);
         transaction.commit();
         session.close();
     }
-
-    public void addComment(Comment comment){
+    public void updateAnyThing(Object onj){
         Session session =sessionFactory.openSession();
         Transaction transaction = session.beginTransaction();
-        session.save(comment);
-        transaction.commit();
-        session.close();
-    }
-
-    public void addCommentConnector(ConnectorComment connectorComment){
-        Session session =sessionFactory.openSession();
-        Transaction transaction = session.beginTransaction();
-        session.save(connectorComment);
+        session.update(onj);
         transaction.commit();
         session.close();
     }
@@ -50,6 +42,7 @@ public class CampusBean {
         CriteriaQuery<Advisor> criteriaQuery = builder.createQuery(Advisor.class);
         Root root = criteriaQuery.from(Advisor.class);
         List<Advisor> advisors = session.createQuery(criteriaQuery).list();
+        session.close();
         return advisors;
     }
 
@@ -59,6 +52,7 @@ public class CampusBean {
         CriteriaQuery<Student> criteriaQuery = builder.createQuery(Student.class);
         Root root = criteriaQuery.from(Student.class);
         List<Student> students = session.createQuery(criteriaQuery).list();
+        session.close();
         return students;
     }
 
@@ -68,6 +62,7 @@ public class CampusBean {
         CriteriaQuery<ConnectorComment> criteriaQuery = builder.createQuery(ConnectorComment.class);
         Root root = criteriaQuery.from(ConnectorComment.class);
         List<ConnectorComment> students = session.createQuery(criteriaQuery).list();
+        session.close();
         return students;
     }
 
@@ -77,6 +72,7 @@ public class CampusBean {
         CriteriaQuery<Practice> criteriaQuery = builder.createQuery(Practice.class);
         Root root = criteriaQuery.from(Practice.class);
         List<Practice> students = session.createQuery(criteriaQuery.where(builder.equal(root.get("student_id"),id))).list();
+        session.close();
         return students;
     }
 
@@ -98,6 +94,78 @@ public class CampusBean {
         Student student = session.createQuery(query.where(criteriaBuilder.equal(root.get("student_id"), ID))).getSingleResult();
         session.close();
         return student;
+    }
+    public Advisor getAdviserById(Long id){
+        Session session = sessionFactory.openSession();
+        CriteriaBuilder criteriaBuilder = session.getCriteriaBuilder();
+        CriteriaQuery<Advisor> query = criteriaBuilder.createQuery(Advisor.class);
+        Root<Advisor> root = query.from(Advisor.class);
+        Advisor student = session.createQuery(query.where(criteriaBuilder.equal(root.get("advisor_id"), id))).getSingleResult();
+        session.close();
+        return student;
+    }
+
+
+    public List<Company> getallCompany() {
+        Session session = sessionFactory.openSession();
+        CriteriaBuilder builder = session.getCriteriaBuilder();
+        CriteriaQuery<Company> criteriaQuery = builder.createQuery(Company.class);
+        Root root = criteriaQuery.from(Company.class);
+        List<Company> company = session.createQuery(criteriaQuery).list();
+        session.close();
+        return company;
+    }
+
+
+    public Company getCompanyById(Long companyID) {
+        Session session = sessionFactory.openSession();
+        CriteriaBuilder criteriaBuilder = session.getCriteriaBuilder();
+        CriteriaQuery<Company> query = criteriaBuilder.createQuery(Company.class);
+        Root<Company> root = query.from(Company.class);
+        Company student = session.createQuery(query.where(criteriaBuilder.equal(root.get("company_id"), companyID))).getSingleResult();
+        session.close();
+        return student;
+    }
+
+    public List<Group> getallGroupByAdviserID(Long adviserID) {
+        Session session = sessionFactory.openSession();
+        CriteriaBuilder builder = session.getCriteriaBuilder();
+        CriteriaQuery<Group> criteriaQuery = builder.createQuery(Group.class);
+        Root root = criteriaQuery.from(Group.class);
+        List<Group> students = session.createQuery(criteriaQuery.where(builder.equal(root.get("advisor_id"),adviserID))).list();
+        session.close();
+        return students;
+    }
+
+    public List<Group> getallGroups() {
+        Session session = sessionFactory.openSession();
+        CriteriaBuilder builder = session.getCriteriaBuilder();
+        CriteriaQuery<Group> criteriaQuery = builder.createQuery(Group.class);
+        Root root = criteriaQuery.from(Group.class);
+        List<Group> company = session.createQuery(criteriaQuery).list();
+        session.close();
+        return company;
+    }
+
+    public Group getGroupByID(Long groupId) {
+
+        Session session = sessionFactory.openSession();
+        CriteriaBuilder criteriaBuilder = session.getCriteriaBuilder();
+        CriteriaQuery<Group> query = criteriaBuilder.createQuery(Group.class);
+        Root<Group> root = query.from(Group.class);
+        Group group = session.createQuery(query.where(criteriaBuilder.equal(root.get("group_id"), groupId))).getSingleResult();
+        session.close();
+        return group;
+    }
+
+    public List<Student> getAllStudentByGroupId(Long groupId) {
+        Session session = sessionFactory.openSession();
+        CriteriaBuilder builder = session.getCriteriaBuilder();
+        CriteriaQuery<Student> criteriaQuery = builder.createQuery(Student.class);
+        Root root = criteriaQuery.from(Student.class);
+        List<Student> students = session.createQuery(criteriaQuery.where(builder.equal(root.get("group_id"),groupId))).list();
+        session.close();
+        return students;
     }
 
 

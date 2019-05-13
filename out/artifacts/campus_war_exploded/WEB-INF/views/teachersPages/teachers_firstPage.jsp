@@ -49,7 +49,9 @@
 
             <li _ngcontent-c3="" class="nav-item dropdown" ngbdropdown="">
                 <a _ngcontent-c3="" aria-haspopup="true" class="nav-link dropdown-toggle" href="javascript:void(0)" ngbdropdowntoggle="" aria-expanded="false">
-                    <i _ngcontent-c3="" class="fa fa-user"></i> Madina Saparbayeva <b _ngcontent-c3="" class="caret">
+                    <i _ngcontent-c3="" class="fa fa-user"></i>
+                    ${advisor.name} ${advisor.surname}
+                    <b _ngcontent-c3="" class="caret">
                 </b></a>
                 <div _ngcontent-c3="" class="dropdown-menu dropdown-menu-right">
                     <a _ngcontent-c3="" class="dropdown-item" href="#/profile">
@@ -87,7 +89,7 @@
                 <span>Мои транскрипты</span></a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="/logining">
+            <a class="nav-link" href="/index">
                 <i _ngcontent-c4="" class="fa fa-fw fa-object-group"></i>
                 <span>Выйти</span></a>
         </li>
@@ -134,77 +136,16 @@
                                 <th>Специальность</th>
                             </tr>
                             </tfoot>
-                            <tbody onclick="window.location='/teachers_studentListPage';">
-                              <%--<c:forEach items="10">    its for future database--%>
 
-
+                            <c:forEach items="${allGroups}" var="arr">
+                            <tbody onclick="window.location='/teachers_studentListPage?groupId=${arr.group_id}';">
                             <tr>
-                                <td>1</td>
-                                <td>CSSE - 1601</td>
-                                <td>16</td>
-                                <td>ВТиПО</td>
+                                <td>${arr.group_id}</td>
+                                <td>${arr.name}</td>
+                                <td>${arr.students.size()}</td>
+                                <td>${arr.specialty_id.name}</td>
                             </tr>
-                              <tr>
-                                  <td>2</td>
-                                  <td>CSSE - 1602</td>
-                                  <td>21</td>
-                                  <td>ВТиПО</td>
-                              </tr>
-                              <tr>
-                                  <td>3</td>
-                                  <td>CSSE - 1603</td>
-                                  <td>17</td>
-                                  <td>ВТиПО</td>
-                              </tr>
-                              <tr>
-                                  <td>4</td>
-                                  <td>CSSE - 1604</td>
-                                  <td>21</td>
-                                  <td>ВТиПО</td>
-                              </tr>
-                              <tr>
-                                  <td>5</td>
-                                  <td>CSSE - 1605</td>
-                                  <td>18</td>
-                                  <td>ВТиПО</td>
-                              </tr>
-                              <tr>
-                                  <td>6</td>
-                                  <td>CSSE - 1606</td>
-                                  <td>19</td>
-                                  <td>ВТиПО</td>
-                              </tr>
-                              <tr>
-                                  <td>7</td>
-                                  <td>CSSE - 1607</td>
-                                  <td>15</td>
-                                  <td>ВТиПО</td>
-                              </tr>
-                              <tr>
-                                  <td>8</td>
-                                  <td>CSSE - 1608</td>
-                                  <td>21</td>
-                                  <td>ВТиПО</td>
-                              </tr>
-                              <tr>
-                                  <td>9</td>
-                                  <td>CSSE - 1609</td>
-                                  <td>21</td>
-                                  <td>ВТиПО</td>
-                              </tr>
-                              <tr>
-                                  <td>10</td>
-                                  <td>CSSE - 1502</td>
-                                  <td>21</td>
-                                  <td>ВТиПО</td>
-                              </tr>
-                              <tr>
-                                  <td>11</td>
-                                  <td>CSSE - 1501</td>
-                                  <td>15</td>
-                                  <td>ВТиПО</td>
-                              </tr>
-
+                            </c:forEach>
                             <%--</c:forEach>--%>
                             </tbody>
                         </table>

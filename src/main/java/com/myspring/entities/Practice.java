@@ -16,12 +16,15 @@ public class Practice implements Serializable{
     private Student    student_id;
     @Column(name = "name")
     private String  name;
+
     @ManyToOne
     @JoinColumn(name = "advisor_id")
-    private Advisor    advisor_id;
+    private Advisor advisor_id;
+
     @ManyToOne
     @JoinColumn(name = "company_id")
     private Company    company_id;
+
     @Column(name = "date_start")
     private Date    date_start;
     @Column(name = "date_finish")
