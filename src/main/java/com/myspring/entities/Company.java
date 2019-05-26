@@ -10,12 +10,16 @@ public class Company implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "company_id")
     private Long  company_id;
+
     @Column(name = "name")
     private String name;
+
     @Column(name = "companyName")
     private String compName;
+
     @Column(name = "ces")
     private Long ces;
+
     @Column(name = "status")
     private int status;
 

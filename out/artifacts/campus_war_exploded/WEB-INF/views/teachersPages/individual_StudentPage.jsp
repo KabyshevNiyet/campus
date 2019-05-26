@@ -223,7 +223,6 @@
                             <th>Дата</th>
                             <th>Оценка</th>
                             <th>Выставить</th>
-                            <th>Действия</th>
                         </tr>
                         </thead>
                         <form action="/changeScoreForPractice" method="post">

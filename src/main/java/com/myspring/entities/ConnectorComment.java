@@ -10,12 +10,15 @@ public class ConnectorComment {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
     private Long id;
+
     @ManyToOne
     @JoinColumn(name = "comment_id")
     private Comment comment_id;
+
     @ManyToOne
     @JoinColumn(name = "student_id")
     private Student student_id;
+
     @ManyToOne
     @JoinColumn(name = "practice_id")
     private Practice practice_id;

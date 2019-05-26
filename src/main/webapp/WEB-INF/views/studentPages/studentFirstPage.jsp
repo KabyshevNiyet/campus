@@ -126,7 +126,6 @@
                     <div class="card-body">
                         <div class="table-responsive">
                             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-
                                 <thead>
                                 <tr>
                                     <th>№</th>
@@ -140,10 +139,12 @@
                                     <th>Оценка</th>
                                 </tr>
                                 </thead>
+                                <tbody onclick="window.location='/studentPracticePage' +
+                                        <%--'?practiceID=${practice.practice_id}';--%>
+                                        ">
 
                                 <c:forEach items="${practiceArray}" var="practice">
 
-                                    <tbody onclick="window.location='/studentPracticePage?practiceID=${practice.practice_id}';">
                                     <%--<form action="/studentPracticePage" onclick="this">--%>
                                 <tr >
                                     <td>${practice.practice_id}</td>
@@ -158,11 +159,14 @@
                                 </tr>
                                         <%--<input type="hidden" value="${practice.practice_id}" name="practiceID">--%>
                                     <%--</form>--%>
-                                </tbody>
                                 </c:forEach>
+                                </tbody>
+
                             </table>
                         </div>
                     </div>
+
+
                     <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
                 </div>
 

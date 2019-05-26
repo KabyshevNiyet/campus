@@ -102,7 +102,7 @@
                 <span>Мои транскрипты</span></a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="/logining">
+            <a class="nav-link" href="/index">
                 <i _ngcontent-c4="" class="fa fa-fw fa-object-group"></i>
                 <span>Выйти</span></a>
         </li>

@@ -148,7 +148,6 @@ public class CampusBean {
     }
 
     public Group getGroupByID(Long groupId) {
-
         Session session = sessionFactory.openSession();
         CriteriaBuilder criteriaBuilder = session.getCriteriaBuilder();
         CriteriaQuery<Group> query = criteriaBuilder.createQuery(Group.class);
@@ -167,14 +166,5 @@ public class CampusBean {
         session.close();
         return students;
     }
-
-
-
-//    Session session = sessionFactory.openSession();
-//    CriteriaBuilder criteriaBuilder = session.getCriteriaBuilder();
-//    CriteriaQuery<Users> query = criteriaBuilder.createQuery(Users.class);
-//    Root<Users> root = query.from(Users.class);
-//    Users users = session.createQuery(query.where(criteriaBuilder.equal(root.get("login"), login))).getSingleResult();
-//        session.close();
-//        return users;
+    
 }
