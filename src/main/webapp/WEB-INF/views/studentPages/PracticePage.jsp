@@ -194,7 +194,7 @@
                         <form action="/add_real_practice" method="get">
                         <tr>
                             <td> <TEXTAREA class="form-control" id="exampleFormControlTextarea1" rows="4" name="fullcomment"></TEXTAREA>
-                                 <br><input type="file" name="file" class="btn btn-link"></td>
+                                 <br><input type="file" name="file" class="btn btn-link" notrequired></td>
 
                             </td>
                             <td>${currentDate}</td>
@@ -284,7 +284,7 @@
             <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
             <div class="modal-footer">
                 <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                <a class="btn btn-primary" href="login.html">Logout</a>
+                <a class="btn btn-primary" href="/index">Logout</a>
             </div>
         </div>
     </div>
