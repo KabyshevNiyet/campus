@@ -165,6 +165,28 @@ public class MainController {
         return mw;
     }
 
+    @RequestMapping(value = "/tester", method = RequestMethod.GET)
+    public ModelAndView testet() {
+        ModelAndView mw = new ModelAndView("studentPages/PracticePage");
+        Long practiceID  = 1L;
+        Practice practice = campusBean.getPracticeByID(practiceID);
+        Student currentStudent=campusBean.getStudentByID(userID);
+        List<Practice> arr = campusBean.getAllPracticeByStudentId(currentStudent.getStudent_id());
+        System.out.println("ARRAY "+arr.toString());
+        String stDate =getDate();
+        List<ConnectorComment> arraylist = campusBean.getAllConnector();
+        List<ConnectorComment> array = check(arraylist,currentStudent,practice);
+
+        mw.addObject("commentArray",array);
+        mw.addObject("arrayPractice",arr);
+        mw.addObject("usersPractice",practice);
+        mw.addObject("student",currentStudent);
+        mw.addObject("currentDate",stDate);
+        mw.addObject("practiceID", practiceID);
+        return mw;
+    }
+
+
     @RequestMapping(value = "/studentFirstPage", method = RequestMethod.GET)
     public ModelAndView studentFirstPage() {
         ModelAndView mw = new ModelAndView("studentPages/studentFirstPage");
@@ -192,6 +214,7 @@ public class MainController {
         mw.addObject("usersPractice",practice);
         mw.addObject("student",currentStudent);
         mw.addObject("currentDate",stDate);
+        mw.addObject("practiceID", practiceID);
         return mw;
     }
 
@@ -256,7 +279,8 @@ public class MainController {
     public ModelAndView add_practice(
             @RequestParam(name = "fullcomment") String fullcomment,
             @RequestParam (name = "userID")     int userlLogin,
-            @RequestParam (name = "practiceID") Long practiceID
+            @RequestParam (name = "practiceID") Long practiceID,
+            @RequestParam(name = "file") byte[] file
     ) throws ParseException {
         ModelAndView mw = new ModelAndView("studentPages/studentFirstPage");
         String stDate =getDate();
@@ -279,6 +303,8 @@ public class MainController {
 
         return mw;
     }
+
+
 
     @RequestMapping(value = "/changeScoreForPractice", method = RequestMethod.POST)
     public ModelAndView add_practice(

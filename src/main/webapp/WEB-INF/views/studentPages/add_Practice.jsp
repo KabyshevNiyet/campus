@@ -18,7 +18,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin - Tables</title>
+    <title>Add Practice</title>
 
 
     <link href="/resources/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -38,7 +38,7 @@
     <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
         <i class="fas fa-bars"></i>
     </button>
-    <a class="navbar-brand mr-1" href="index.html">IITU CAMPUS</a>
+    <a class="navbar-brand mr-1" href="/studentFirstPage">IITU CAMPUS</a>
 
 
 
@@ -47,27 +47,30 @@
     <!-- Navbar -->
     <div _ngcontent-c3="" class="collapse navbar-collapse">
         <ul _ngcontent-c3="" class="navbar-nav ml-auto">
-            <li _ngcontent-c3="" class="nav-item dropdown" ngbdropdown="">
-                <a _ngcontent-c3="" aria-haspopup="true" class="nav-link dropdown-toggle" href="javascript:void(0)"  id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <li class="nav-item dropdown no-arrow mx-1">
+            <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 
-                    <i _ngcontent-c3="" class="fa fa-language"></i>
-                    Русский <b _ngcontent-c3="" class="caret"></b></a>
-                <div _ngcontent-c3="" class="dropdown-menu dropdown-menu-right">
-                    <a _ngcontent-c3="" href="javascript:void(0)" class="dropdown-item active"> Русский </a>
-                    <a _ngcontent-c3="" href="javascript:void(0)" class="dropdown-item "> Англиский </a>
-                    <a _ngcontent-c3="" href="javascript:void(0)" class="dropdown-item "> Казахский </a></div></li>
-            <li class="nav-item dropdown no-arrow">
-                <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <i class="fas fa-user-circle fa-fw"></i>
-                </a>
-                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
-
-                    <a class="dropdown-item" href="#">Profile</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">Logout</a>
-                </div>
-            </li>
-        </ul>
+                <i class="fa fa-language"></i>
+                Русский <b _ngcontent-c3="" class="caret"></b>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="alertsDropdown">
+                <a _ngcontent-c3="" href="javascript:void(0)" class="dropdown-item active"> Русский </a>
+                <a _ngcontent-c3="" href="javascript:void(0)" class="dropdown-item "> Англиский </a>
+                <a _ngcontent-c3="" href="javascript:void(0)" class="dropdown-item "> Казахский </a>
+            </div>
+        </li>
+        <li class="nav-item dropdown no-arrow">
+            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fa fa-user">${student.name} ${student.surname}</i>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
+                <a class="dropdown-item" href="#">Профиль</a>
+                <a class="dropdown-item" href="#">Настройки</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">Выйти</a>
+            </div>
+        </li>
+    </ul>
 
     </div>
 </nav>

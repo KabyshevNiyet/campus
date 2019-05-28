@@ -18,7 +18,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <meta charset="utf-8">
-    <title>SB Admin - Dashboard</title>
+    <title>Practice Page</title>
 
 
     <link href="/resources/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -39,31 +39,38 @@
         <i class="fas fa-bars"></i>
     </button>
 
-    <a class="navbar-brand mr-1" href="index.html">IITU CAMPUS</a>
+    <a class="navbar-brand mr-1" href="/studentFirstPage">IITU CAMPUS</a>
 
 
 
     <!-- Navbar -->
     <div _ngcontent-c3="" class="collapse navbar-collapse">
         <ul _ngcontent-c3="" class="navbar-nav ml-auto">
-            <li _ngcontent-c3="" class="nav-item dropdown" ngbdropdown="">
-                <a _ngcontent-c3="" aria-haspopup="true" class="nav-link dropdown-toggle" href="javascript:void(0)" ngbdropdowntoggle="" aria-expanded="false">
-                    <i _ngcontent-c3="" class="fa fa-language"></i>
-                    Русский <b _ngcontent-c3="" class="caret"></b></a>
-                <div _ngcontent-c3="" class="dropdown-menu dropdown-menu-right">
+            <li class="nav-item dropdown no-arrow mx-1">
+                <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+
+                    <i class="fa fa-language"></i>
+                    Русский <b _ngcontent-c3="" class="caret"></b>
+                </a>
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="alertsDropdown">
                     <a _ngcontent-c3="" href="javascript:void(0)" class="dropdown-item active"> Русский </a>
                     <a _ngcontent-c3="" href="javascript:void(0)" class="dropdown-item "> Англиский </a>
-                    <a _ngcontent-c3="" href="javascript:void(0)" class="dropdown-item "> Казахский </a></div></li>
-
-            <li _ngcontent-c3="" class="nav-item dropdown" ngbdropdown="">
-                <a _ngcontent-c3="" aria-haspopup="true" class="nav-link dropdown-toggle" href="javascript:void(0)" ngbdropdowntoggle="" aria-expanded="false">
-                    <i _ngcontent-c3="" class="fa fa-user"></i> ${student.name} ${student.surname} <b _ngcontent-c3="" class="caret">
-                </b></a>
-                <div _ngcontent-c3="" class="dropdown-menu dropdown-menu-right">
-                    <a _ngcontent-c3="" class="dropdown-item" href="#/profile">
-                        <i _ngcontent-c3="" class="fa fa-fw fa-user"></i> Профиль </a>
-                    <a _ngcontent-c3="" class="dropdown-item" href="#/login">
-                        <i _ngcontent-c3="" class="fa fa-fw fa-power-off"></i> Выйти </a></div></li></ul></div>
+                    <a _ngcontent-c3="" href="javascript:void(0)" class="dropdown-item "> Казахский </a>
+                </div>
+            </li>
+            <li class="nav-item dropdown no-arrow">
+                <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="fa fa-user">${student.name} ${student.surname}</i>
+                </a>
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
+                    <a class="dropdown-item" href="#">Профиль</a>
+                    <a class="dropdown-item" href="#">Настройки</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">Выйти</a>
+                </div>
+            </li>
+        </ul>
+    </div>
 
 </nav>
 <div id="wrapper">
@@ -91,7 +98,7 @@
                     <span>Мои справки</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="/tester">
                     <i _ngcontent-c4="" class="fa fa-book"></i>
                     <span>Мои транскрипты</span></a>
             </li>
@@ -145,68 +152,24 @@
                             <th>Оценка</th>
                         </tr>
                         </thead>
-                        <tbody onclick="window.location='/studentPracticePage?practiceID=${practice1.practice_id}';">
 
-                            <c:forEach items="${arrayPractice}" var="practice1">
-
-                                <tr >
-                                    <td>${practice1.practice_id}</td>
-                                    <td>${practice1.name}</td>
+                        <%--<c:forEach items="${arrayPractice}" var="practice1">
+                        --%>
+                        <tbody <%--onclick="window.location='/studentPracticePage?practiceID=${practice1.practice_id}';"--%> >
+                                <tr>
+                                    <td>${usersPractice.practice_id}</td>
+                                    <td>${usersPractice.name}</td>
                                     <td>Практика</td>
-                                    <td>${practice1.advisor_id.name}</td>
-                                    <td>${practice1.company_id.compName}</td>
-                                    <td>${practice1.company_id.name}</td>
-                                    <td>${practice1.date_start}</td>
-                                    <td>${practice1.date_finish}</td>
-                                    <td>${practice1.score}</td>
+                                    <td>${usersPractice.advisor_id.name}</td>
+                                    <td>${usersPractice.company_id.compName}</td>
+                                    <td>${usersPractice.company_id.name}</td>
+                                    <td>${usersPractice.date_start}</td>
+                                    <td>${usersPractice.date_finish}</td>
+                                    <td>${usersPractice.score}</td>
                                 </tr>
-                                </tbody>
-                            </c:forEach>
+                            </tbody>
 
-                        <%--<tr >--%>
-                            <%--<td>25</td>--%>
-                            <%--<td>hagvdsbjkn</td>--%>
-                            <%--<td>Практика</td>--%>
-                            <%--<td>sahdvgbjkn</td>--%>
-                            <%--<td>hgjfbdsknl</td>--%>
-                            <%--<td>ugvhigsdjfo</td>--%>
-                            <%--<td>19998</td>--%>
-                            <%--<td>651726</td>--%>
-                            <%--<td>95</td>--%>
-                        <%--</tr>--%>
-                        <%--<tr >--%>
-                            <%--<td>30</td>--%>
-                            <%--<td>hagvdsbjkn</td>--%>
-                            <%--<td>Практика</td>--%>
-                            <%--<td>sahdvgbjkn</td>--%>
-                            <%--<td>hgjfbdsknl</td>--%>
-                            <%--<td>ugvhigsdjfo</td>--%>
-                            <%--<td>19998</td>--%>
-                            <%--<td>651726</td>--%>
-                            <%--<td>95</td>--%>
-                        <%--</tr>--%>
-                        <%--<tr >--%>
-                            <%--<td>40</td>--%>
-                            <%--<td>hagvdsbjkn</td>--%>
-                            <%--<td>Практика</td>--%>
-                            <%--<td>sahdvgbjkn</td>--%>
-                            <%--<td>hgjfbdsknl</td>--%>
-                            <%--<td>ugvhigsdjfo</td>--%>
-                            <%--<td>19998</td>--%>
-                            <%--<td>651726</td>--%>
-                            <%--<td>95</td>--%>
-                        <%--</tr>--%>
-                        <%--<tr >--%>
-                            <%--<td>100</td>--%>
-                            <%--<td>hagvdsbjkn</td>--%>
-                            <%--<td>Практика</td>--%>
-                            <%--<td>sahdvgbjkn</td>--%>
-                            <%--<td>hgjfbdsknl</td>--%>
-                            <%--<td>ugvhigsdjfo</td>--%>
-                            <%--<td>19998</td>--%>
-                            <%--<td>651726</td>--%>
-                            <%--<td>95</td>--%>
-                        <%--</tr>--%>
+                        <%--</c:forEach>--%>
 
                     </table>
 
@@ -215,7 +178,7 @@
 
             <!--/.2nd table-->
             <div class="card-body">
-                <h3>Дневник</h3><br>
+                <h3>Дневник - ${usersPractice.name}</h3><br>
                 <div class="table-responsive">
                     <table class="table table-bordered" id="dataTable2" width="100%" cellspacing="0">
 
@@ -230,11 +193,15 @@
                         <tbody>
                         <form action="/add_real_practice" method="get">
                         <tr>
-                            <td> <TEXTAREA class="form-control" id="exampleFormControlTextarea1" rows="4" name="fullcomment"></TEXTAREA></td>
+                            <td> <TEXTAREA class="form-control" id="exampleFormControlTextarea1" rows="4" name="fullcomment"></TEXTAREA>
+                                 <br><input type="file" name="file" class="btn btn-link"></td>
+
+                            </td>
                             <td>${currentDate}</td>
                             <input type="hidden" name="practiceID" value="${usersPractice.practice_id}">
                             <input type="hidden" name="userID" value="${student.login}">
-                            <td><input type="submit" class="btn btn-success" ></td>
+                            <td><input type="submit" class="btn btn-success">
+
                         </tr>
                         </form>
                             <c:forEach items="${commentArray}" var="commentArr">

@@ -44,24 +44,31 @@
     <!-- Navbar -->
     <div _ngcontent-c3="" class="collapse navbar-collapse">
         <ul _ngcontent-c3="" class="navbar-nav ml-auto">
-            <li _ngcontent-c3="" class="nav-item dropdown" ngbdropdown="">
-                <a _ngcontent-c3="" aria-haspopup="true" class="nav-link dropdown-toggle" href="javascript:void(0)" ngbdropdowntoggle="" aria-expanded="false">
-                    <i _ngcontent-c3="" class="fa fa-language"></i>
-                    Русский <b _ngcontent-c3="" class="caret"></b></a>
-                <div _ngcontent-c3="" class="dropdown-menu dropdown-menu-right">
+            <li class="nav-item dropdown no-arrow mx-1">
+                <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+
+                    <i class="fa fa-language"></i>
+                    Русский <b _ngcontent-c3="" class="caret"></b>
+                </a>
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="alertsDropdown">
                     <a _ngcontent-c3="" href="javascript:void(0)" class="dropdown-item active"> Русский </a>
                     <a _ngcontent-c3="" href="javascript:void(0)" class="dropdown-item "> Англиский </a>
-                    <a _ngcontent-c3="" href="javascript:void(0)" class="dropdown-item "> Казахский </a></div></li>
-
-            <li _ngcontent-c3="" class="nav-item dropdown" ngbdropdown="">
-                <a _ngcontent-c3="" aria-haspopup="true" class="nav-link dropdown-toggle" href="javascript:void(0)" ngbdropdowntoggle="" aria-expanded="false">
-                    <i _ngcontent-c3="" class="fa fa-user"></i>${advisor.name} ${advisor.surname}<b _ngcontent-c3="" class="caret">
-                </b></a>
-                <div _ngcontent-c3="" class="dropdown-menu dropdown-menu-right">
-                    <a _ngcontent-c3="" class="dropdown-item" href="#/profile">
-                        <i _ngcontent-c3="" class="fa fa-fw fa-user"></i> Профиль </a>
-                    <a _ngcontent-c3="" class="dropdown-item" href="#/login">
-                        <i _ngcontent-c3="" class="fa fa-fw fa-power-off"></i> Выйти </a></div></li></ul></div>
+                    <a _ngcontent-c3="" href="javascript:void(0)" class="dropdown-item "> Казахский </a>
+                </div>
+            </li>
+            <li class="nav-item dropdown no-arrow">
+                <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="fa fa-user">${advisor.name} ${advisor.surname}</i>
+                </a>
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
+                    <a class="dropdown-item" href="#">Профиль</a>
+                    <a class="dropdown-item" href="#">Настройки</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="/index" data-toggle="modal" data-target="#logoutModal">Выйти</a>
+                </div>
+            </li>
+        </ul>
+    </div>
 
 </nav>
 <div id="wrapper">

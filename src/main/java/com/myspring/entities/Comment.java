@@ -20,13 +20,17 @@ public class Comment implements Serializable {
     @Column(name = "login")
     private int login;
 
+    @Column(name = "file")
+    private byte[] file;
+
     public Comment() {
     }
 
-    public Comment(String comment, Date commentDate, int login) {
+    public Comment(String comment, Date commentDate, int login, byte[] file) {
         this.comment = comment;
         this.commentDate = commentDate;
         this.login = login;
+        this.file = file;
     }
 
     public Long getComment_id() {
@@ -59,6 +63,14 @@ public class Comment implements Serializable {
 
     public void setLogin(int login) {
         this.login = login;
+    }
+
+    public byte[] getFile() {
+        return file;
+    }
+
+    public void setFile(byte[] file) {
+        this.file = file;
     }
 
     @Override

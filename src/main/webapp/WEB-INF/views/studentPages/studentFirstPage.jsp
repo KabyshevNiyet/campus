@@ -18,7 +18,7 @@
         <meta name="description" content="">
         <meta name="author" content="">
         <meta charset="utf-8">
-        <title>SB Admin - Dashboard</title>
+        <title>Student Page</title>
 
 
         <link href="/resources/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -39,29 +39,36 @@
             <i class="fas fa-bars"></i>
         </button>
 
-        <a class="navbar-brand mr-1" href="index.html">IITU CAMPUS</a>
+        <a class="navbar-brand mr-1" href="/studentFirstPage">IITU CAMPUS</a>
 
         <!-- Navbar -->
         <div _ngcontent-c3="" class="collapse navbar-collapse">
             <ul _ngcontent-c3="" class="navbar-nav ml-auto">
-                <li _ngcontent-c3="" class="nav-item dropdown" ngbdropdown="">
-                    <a _ngcontent-c3="" aria-haspopup="true" class="nav-link dropdown-toggle" href="javascript:void(0)" ngbdropdowntoggle="" aria-expanded="false">
-                        <i _ngcontent-c3="" class="fa fa-language"></i>
-                        Русский <b _ngcontent-c3="" class="caret"></b></a>
-                    <div _ngcontent-c3="" class="dropdown-menu dropdown-menu-right">
-                        <a _ngcontent-c3="" href="javascript:void(0)" class="dropdown-item active"> Русский </a>
-                        <a _ngcontent-c3="" href="javascript:void(0)" class="dropdown-item "> Англиский </a>
-                        <a _ngcontent-c3="" href="javascript:void(0)" class="dropdown-item "> Казахский </a></div></li>
+            <li class="nav-item dropdown no-arrow mx-1">
+                <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 
-                <li _ngcontent-c3="" class="nav-item dropdown" ngbdropdown="">
-                    <a _ngcontent-c3="" aria-haspopup="true" class="nav-link dropdown-toggle" href="javascript:void(0)" ngbdropdowntoggle="" aria-expanded="false">
-                        <i _ngcontent-c3="" class="fa fa-user"></i> ${student.name} ${student.surname} <b _ngcontent-c3="" class="caret">
-                    </b></a>
-                    <div _ngcontent-c3="" class="dropdown-menu dropdown-menu-right">
-                        <a _ngcontent-c3="" class="dropdown-item" href="#/profile">
-                            <i _ngcontent-c3="" class="fa fa-fw fa-user"></i> Профиль </a>
-                        <a _ngcontent-c3="" class="dropdown-item" href="#/login">
-                            <i _ngcontent-c3="" class="fa fa-fw fa-power-off"></i> Выйти </a></div></li></ul></div>
+                    <i class="fa fa-language"></i>
+                    Русский <b _ngcontent-c3="" class="caret"></b>
+                </a>
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="alertsDropdown">
+                    <a _ngcontent-c3="" href="javascript:void(0)" class="dropdown-item active"> Русский </a>
+                    <a _ngcontent-c3="" href="javascript:void(0)" class="dropdown-item "> Англиский </a>
+                    <a _ngcontent-c3="" href="javascript:void(0)" class="dropdown-item "> Казахский </a>
+                </div>
+            </li>
+            <li class="nav-item dropdown no-arrow">
+                <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="fa fa-user">${student.name} ${student.surname}</i>
+                </a>
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
+                    <a class="dropdown-item" href="#">Профиль</a>
+                    <a class="dropdown-item" href="#">Настройки</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">Выйти</a>
+                </div>
+            </li>
+        </ul>
+        </div>
 
     </nav>
     <div id="wrapper">
@@ -139,12 +146,9 @@
                                     <th>Оценка</th>
                                 </tr>
                                 </thead>
-                                <tbody onclick="window.location='/studentPracticePage' +
-                                        <%--'?practiceID=${practice.practice_id}';--%>
-                                        ">
 
                                 <c:forEach items="${practiceArray}" var="practice">
-
+                                <tbody onclick="window.location='/studentPracticePage?practiceID=${practice.practice_id}'">
                                     <%--<form action="/studentPracticePage" onclick="this">--%>
                                 <tr >
                                     <td>${practice.practice_id}</td>

@@ -78,36 +78,36 @@
     <!-- Sidebar -->
 
 
-        <ul class="sidebar navbar-nav">
-            <li class="nav-item">
-                <a class="nav-link" href="#">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>Рабочая область</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">
-                    <i class="fa fa-book"></i>
-                    <span>Учебный план</span>
-                </a>
-            </li>
+    <ul class="sidebar navbar-nav">
+        <li class="nav-item">
+            <a class="nav-link" href="#">
+                <i class="fas fa-fw fa-tachometer-alt"></i>
+                <span>Рабочая область</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">
+                <i class="fa fa-book"></i>
+                <span>Учебный план</span>
+            </a>
+        </li>
 
-            <li class="nav-item">
-                <a class="nav-link" href="#">
-                    <i _ngcontent-c4="" class="fa fa-fw fa-object-group"></i>
-                    <span>Мои справки</span></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/tester">
-                    <i _ngcontent-c4="" class="fa fa-book"></i>
-                    <span>Мои транскрипты</span></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/index">
-                    <i _ngcontent-c4="" class="fa fa-fw fa-object-group"></i>
-                    <span>Выйти</span></a>
-            </li>
-        </ul>
+        <li class="nav-item">
+            <a class="nav-link" href="#">
+                <i _ngcontent-c4="" class="fa fa-fw fa-object-group"></i>
+                <span>Мои справки</span></a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">
+                <i _ngcontent-c4="" class="fa fa-book"></i>
+                <span>Мои транскрипты</span></a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/index">
+                <i _ngcontent-c4="" class="fa fa-fw fa-object-group"></i>
+                <span>Выйти</span></a>
+        </li>
+    </ul>
     </ul>
 
 
@@ -156,18 +156,18 @@
                         <%--<c:forEach items="${arrayPractice}" var="practice1">
                         --%>
                         <tbody <%--onclick="window.location='/studentPracticePage?practiceID=${practice1.practice_id}';"--%> >
-                                <tr>
-                                    <td>${usersPractice.practice_id}</td>
-                                    <td>${usersPractice.name}</td>
-                                    <td>Практика</td>
-                                    <td>${usersPractice.advisor_id.name}</td>
-                                    <td>${usersPractice.company_id.compName}</td>
-                                    <td>${usersPractice.company_id.name}</td>
-                                    <td>${usersPractice.date_start}</td>
-                                    <td>${usersPractice.date_finish}</td>
-                                    <td>${usersPractice.score}</td>
-                                </tr>
-                            </tbody>
+                        <tr>
+                            <td>${usersPractice.practice_id}</td>
+                            <td>${usersPractice.name}</td>
+                            <td>Практика</td>
+                            <td>${usersPractice.advisor_id.name}</td>
+                            <td>${usersPractice.company_id.compName}</td>
+                            <td>${usersPractice.company_id.name}</td>
+                            <td>${usersPractice.date_start}</td>
+                            <td>${usersPractice.date_finish}</td>
+                            <td>${usersPractice.score}</td>
+                        </tr>
+                        </tbody>
 
                         <%--</c:forEach>--%>
 
@@ -191,26 +191,26 @@
                         </thead>
 
                         <tbody>
-                        <form action="/add_real_practice" method="get">
-                        <tr>
-                            <td> <TEXTAREA class="form-control" id="exampleFormControlTextarea1" rows="4" name="fullcomment"></TEXTAREA>
-                                 <br><input type="file" name="file" class="btn btn-link"></td>
-
-                            </td>
-                            <td>${currentDate}</td>
-                            <input type="hidden" name="practiceID" value="${usersPractice.practice_id}">
-                            <input type="hidden" name="userID" value="${student.login}">
-                            <td><input type="submit" class="btn btn-success">
-
-                        </tr>
-                        </form>
-                            <c:forEach items="${commentArray}" var="commentArr">
+                        <form action="/add_real_practice_test" method="get">
                             <tr>
-                            <td>${commentArr.comment_id.comment}</td>
-                            <td>${commentArr.comment_id.commentDate}</td>
-                            <td></td>
-                        </tr>
-                            </c:forEach>
+                                <td> <TEXTAREA class="form-control" id="exampleFormControlTextarea1" rows="4" name="fullcomment"></TEXTAREA>
+                                    <br><input type="file" name="file" class="btn btn-link"></td>
+
+                                </td>
+                                <td>${currentDate}</td>
+                                <input type="hidden" name="practiceID" value="${usersPractice.practice_id}">
+                                <input type="hidden" name="userID" value="${student.login}">
+                                <td><input type="submit" class="btn btn-success">
+
+                            </tr>
+                        </form>
+                        <c:forEach items="${commentArray}" var="commentArr">
+                            <tr>
+                                <td>${commentArr.comment_id.comment}</td>
+                                <td>${commentArr.comment_id.commentDate}</td>
+                                <td></td>
+                            </tr>
+                        </c:forEach>
                         </tbody>
 
                     </table>
