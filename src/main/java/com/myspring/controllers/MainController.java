@@ -312,16 +312,22 @@ public class MainController {
     @RequestMapping(value = "/changeScoreForPractice", method = RequestMethod.POST)
     public ModelAndView add_practice(
             @RequestParam (name = "ScoreForScore")int score,
-            @RequestParam(name = "studentId") Long studID){
+            @RequestParam(name = "studentId") Long studID,
+            @RequestParam(name = "ReportText") String report){
         ModelAndView mw = new ModelAndView("teachersPages/individual_StudentPage");
         System.out.println(score);
         Advisor advisor = getAdviser(userID);
         Student student = campusBean.getStudentByID(studID);
         mw.addObject("student",student);
         mw.addObject("advisor",advisor);
+        Comment comment = new Comment();
+        comment.setComment(report);
+        comment.setLogin(student.getLogin());
+
         List<Practice> practiceList = campusBean.getAllPracticeByStudentId(studID);
         String stDate =getDate();
         Date date = java.sql.Date.valueOf(stDate);
+        comment.setCommentDate((java.sql.Date) date);
         mw.addObject("allPractice",practiceList);
         Long practiceID = 0l;
         for (Practice prac:practiceList) {
@@ -333,10 +339,18 @@ public class MainController {
                 practiceID=prac.getPractice_id();
                 prac.setScore(score);
                 campusBean.updateAnyThing(prac);
+                comment.setComment(report+"  " + advisor.getName());
+                campusBean.addAnything(comment);
+                ConnectorComment connectorComment = new ConnectorComment();
+                connectorComment.setComment_id(comment);
+                connectorComment.setPractice_id(prac);
+                connectorComment.setStudent_id(student);
+                campusBean.addAnything(connectorComment);
                 mw.addObject("yourPractice",prac);
 
             }
         }
+
         List<ConnectorComment> arraylist = campusBean.getAllConnector();
         System.out.println(arraylist.toString());
         List <ConnectorComment> arr = new ArrayList<ConnectorComment>();
