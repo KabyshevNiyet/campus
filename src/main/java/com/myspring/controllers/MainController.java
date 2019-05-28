@@ -11,10 +11,7 @@ import org.springframework.web.servlet.ModelAndView;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 @Controller
 public class MainController {
@@ -285,10 +282,16 @@ public class MainController {
         ModelAndView mw = new ModelAndView("studentPages/studentFirstPage");
         String stDate =getDate();
 
+        Random rand = new Random();
+        int i = rand.nextInt(10000000);
+
+
+
         Comment comment = new Comment();
         comment.setComment(fullcomment);
         comment.setLogin(userlLogin);
         comment.setCommentDate(java.sql.Date.valueOf(stDate));
+        comment.setFile(file);
         Practice practice = campusBean.getPracticeByID(practiceID);
         campusBean.addAnything(comment);
         ConnectorComment connectorComment = new ConnectorComment();
